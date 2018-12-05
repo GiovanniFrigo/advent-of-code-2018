@@ -35,3 +35,11 @@ Part 2: "42 is the answer"
 Just like the past years, I will keep a journal of the most challenging/interesting things I'll learn during this journey. 
 
 [What I learned 📖](what-i-learned.md)
+
+## Completed challenges
+
+| Day | Stars | Notes |
+|-----|-------|-------|
+| [Day  1](./code/day1.hs) | ⭐️🌟 | |
+| [Day  2](./code/day2.hs) | ⭐️🌟 | [📖](what-i-learned.md#day-2) |
+| [Day  5](./code/day5.hs) | ⭐️🌟 | |

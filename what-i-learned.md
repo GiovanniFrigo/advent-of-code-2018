@@ -49,4 +49,4 @@ Also, `catMaybes :: [Maybe a] -> [a]` from `Data.Maybe` is super useful to filte
 ```haskell
 *Main Data.Maybe> catMaybes [Just "a", Nothing, Just "c", Nothing]
 ["a","c"]
-````
+```
