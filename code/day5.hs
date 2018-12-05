@@ -1,4 +1,4 @@
--- http://adventofcode.com/2018/day/3
+-- http://adventofcode.com/2018/day/5
 -- Alchemical Reduction
 
 import Data.List
