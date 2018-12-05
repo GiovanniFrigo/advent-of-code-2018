@@ -1,0 +1,10 @@
+# To ignore the ghc-compiled files (which have no extension), this .gitignore file works by telling git which files to include
+
+# Exclude every file from versioning
+*
+# except this very file,
+!.gitignore
+# the Haskell sources, the problems inputs, the .md files
+!*.hs
+!*.in
+!*.md
