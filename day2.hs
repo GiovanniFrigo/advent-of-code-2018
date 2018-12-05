@@ -1,19 +1,15 @@
 import Data.List
 import Data.Maybe
-import Common ((?))
+import Common ((?), combineElements)
 
 boxChecksum :: [Char] -> [Int]
 boxChecksum id = map length $ group $ sort id 
 
-has2 checksum = 2 `elem` checksum
-has3 checksum = 3 `elem` checksum
-
-with2 boxChecksums = length $ filter (has2) boxChecksums
-with3 boxChecksums = length $ filter (has3) boxChecksums
+countListsWithElement n boxChecksums = length $ filter (n `elem`) boxChecksums
 
 checksum :: [[Char]] -> Int
 checksum lines = let checksums = map boxChecksum lines in
-    (with2 checksums) * (with3 checksums)
+    (countListsWithElement 2 checksums) * (countListsWithElement 3 checksums)
 
 part1 = do
     contents <- readFile "day2.in"
@@ -29,9 +25,6 @@ matchingChecksum' (list1, list2) =
     let sameCharacters = catMaybes $ zipWith (\x -> \y -> (x == y) ? Just x $ Nothing) list1 list2 in
     (length list1 == 1 + length sameCharacters) ? Just sameCharacters $ Nothing 
 
-combineLines :: [[Char]] -> [([Char], [Char])]
-combineLines lines = [(x, y) | x <- lines, y <- lines]
-
 part2 = do
     contents <- readFile "day2.in"
-    return $ head $ catMaybes $ map matchingChecksum' $ combineLines $ lines contents
+    return $ head $ catMaybes $ map matchingChecksum' $ combineElements $ lines contents
