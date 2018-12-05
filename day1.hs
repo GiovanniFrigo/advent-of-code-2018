@@ -1,3 +1,6 @@
+-- http://adventofcode.com/2018/day/1
+-- Chronal Calibration
+
 toInt x = read x :: Int
 
 readSignedInt ('+':value) = toInt value
@@ -5,8 +8,7 @@ readSignedInt value = toInt value
 
 part1 = do
     contents <- readFile "day1.in"
-    return $ show $ foldr (+) 0 $ map (readSignedInt) $ lines contents
-
+    return $ foldr (+) 0 $ map (readSignedInt) $ lines contents
 
 duplicateFreq :: [Int] -> [Int] -> Int -> Int
 duplicateFreq seenFreqs (x:xs) freq = let nextFreq = freq + x in 
@@ -16,6 +18,12 @@ duplicateFreq seenFreqs [] freq  = error "unsolvable"
 
 part2 = do
     contents <- readFile "day1.in"
-    let input = map (readSignedInt) $ lines contents
-    let res = duplicateFreq [0] (cycle input) 0
-    return (show res)
+    let inputAsInt = map (readSignedInt) $ lines contents
+    return $ duplicateFreq [0] (cycle inputAsInt) 0
+
+main = do
+    putStrLn "Solving.."
+    solution1 <- part1
+    putStrLn $ "Part 1: " ++ show solution1
+    solution2 <- part2
+    putStrLn $ "Part 2: " ++ show solution2

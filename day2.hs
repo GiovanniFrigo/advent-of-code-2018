@@ -1,3 +1,6 @@
+-- http://adventofcode.com/2018/day/2
+-- Inventory Management System
+
 import Data.List
 import Data.Maybe
 import Common ((?), combineElements)
@@ -28,3 +31,10 @@ matchingChecksum' (list1, list2) =
 part2 = do
     contents <- readFile "day2.in"
     return $ head $ catMaybes $ map matchingChecksum' $ combineElements $ lines contents
+
+main = do
+    putStrLn "Solving.."
+    solution1 <- part1
+    putStrLn $ "Part 1: " ++ show solution1
+    solution2 <- part2
+    putStrLn $ "Part 2: " ++ show solution2
