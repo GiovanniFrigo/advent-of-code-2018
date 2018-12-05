@@ -25,5 +25,5 @@ removePolymer polymer = filter (\x -> x /= polymer && not (shouldDelete x polyme
 
 part2 = do 
     contents <- readFile "day5.in"
-    let removedPolymers = zipWith removePolymer ['a'.. 'z'] $ cycle [contents]
-    return $ minimum $ map length $ map recursivelyDeleteAdjacents removedPolymers
+    let removedPolymers = zipWith removePolymer ['a'..'z'] $ cycle [contents]
+    return $ minimum $ map (length . recursivelyDeleteAdjacents) removedPolymers
