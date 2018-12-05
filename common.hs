@@ -1,3 +1,5 @@
+module Common where
+
 -- ternary operator
 bool :: a -> a -> Bool -> a
 bool t _ True = t
@@ -15,4 +17,4 @@ combineLists lists = [(x, y) | x <- lists, y <- lists]
 -- solution template
 part1 = do
     contents <- readFile "dayX.in"
-    return $ show $ lines contents
+    return $ lines contents
