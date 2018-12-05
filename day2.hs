@@ -1,5 +1,6 @@
 import Data.List
 import Data.Maybe
+import Common ((?))
 
 boxChecksum :: [Char] -> [Int]
 boxChecksum id = map length $ group $ sort id 
@@ -16,15 +17,11 @@ checksum lines = let checksums = map boxChecksum lines in
 
 part1 = do
     contents <- readFile "day2.in"
-    return $ show $ checksum $ lines contents
+    return $ checksum $ lines contents
 
 matchingChecksum :: ([Char], [Char]) -> Maybe [Char]
 matchingChecksum (list1, list2) = let sameCharacters = filter (\(a, b) -> a == b) $ zip list1 list2 in
     (length list1 == 1 + length sameCharacters) ? Just (map fst sameCharacters) $ Nothing
-
-(?) :: Bool -> a -> a -> a
-True  ? x = const x
-False ? _ = id
 
 -- alternative version using zipWith. I like this one better
 matchingChecksum' :: ([Char], [Char]) -> Maybe [Char]
@@ -37,4 +34,4 @@ combineLines lines = [(x, y) | x <- lines, y <- lines]
 
 part2 = do
     contents <- readFile "day2.in"
-    return $ show $ head $ catMaybes $ map matchingChecksum' $ combineLines $ lines contents
+    return $ head $ catMaybes $ map matchingChecksum' $ combineLines $ lines contents
